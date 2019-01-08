@@ -9,7 +9,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "adaptivecards": "1.1.0",
+    "adaptivecards": "1.1.2",
     "botframework-webchat": "^4.2.0",
     "classnames": "^2.2.6",
     "glamor": "^2.20.40",

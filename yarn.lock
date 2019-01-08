@@ -1128,7 +1128,12 @@ acorn@^6.0.1, acorn@^6.0.2, acorn@^6.0.4:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.5.tgz#81730c0815f3f3b34d8efa95cb7430965f4d887a"
   integrity sha512-i33Zgp3XWtmZBMNvCr4azvOFeWVw1Rk6p3hfi3LUDvIFraOMywb1kAtrbi+med14m4Xfpqm3zRZMT+c0FNE7kg==
 
-adaptivecards@1.1.0, adaptivecards@^1.0.0:
+adaptivecards@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/adaptivecards/-/adaptivecards-1.1.2.tgz#7f77f6fe5d9d2767bb907e440494973911f2f987"
+  integrity sha512-fpFLxQzgPfIvi+SV0MH5Cl+wdXVDvMF98fBY/DQJLF47hVEbyMWtxpTFJUR6bSo1FjXyJxrqoT+qLlm1xVpTYw==
+
+adaptivecards@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/adaptivecards/-/adaptivecards-1.1.0.tgz#0db0f0086eca2f8252b771546ee85f3fc7e308d9"
   integrity sha512-n4vRIjo0vKvjMMnTKqRZm3TXhq+8saN1s17Z0pQEtDpBWjrGbfn8e+Qx/xvgNjqFYzWIme7uZAX3DBDhSOLu/A==
