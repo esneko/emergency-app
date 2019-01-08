@@ -1,6 +1,6 @@
 {
-  "name": "emergency-bot-client",
-  "version": "0.0.1",
+  "name": "emergency-app",
+  "version": "0.0.2",
   "private": true,
   "browserslist": [
     ">0.2%",
@@ -23,7 +23,6 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "prepublishOnly": "npm run build",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   }

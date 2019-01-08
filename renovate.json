@@ -1,5 +1,9 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "packageRules": [{
+    "packageNames": ["adaptivecards"],
+    "allowedVersions": "1.1.0"
+  }]
 }

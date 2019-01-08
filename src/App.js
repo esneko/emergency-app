@@ -1,36 +1,60 @@
-import { css } from 'glamor';
-import React from 'react';
-import memoize from 'memoize-one';
+import { css } from 'glamor'
+import React from 'react'
+import memoize from 'memoize-one'
 
 import ReactWebChat, {
   createBrowserWebSpeechPonyfillFactory,
   createCognitiveServicesSpeechServicesPonyfillFactory,
-  createDirectLine
-} from 'botframework-webchat';
+  createDirectLine,
+  createStyleSet,
+} from 'botframework-webchat'
 
-import createSpeakActivityMiddleware from './createSpeakActivityMiddleware';
+import createSpeakActivityMiddleware from './createSpeakActivityMiddleware'
 
 css.global('body', {
-  backgroundColor: '#EEE'
-});
+  backgroundColor: '#FFFFFF',
+})
 
 const ROOT_CSS = css({
   height: '100%',
-});
+})
 
 const CHAT_CSS = css({
   height: '100%',
-  margin: '0 auto'
-});
+  margin: '0 auto',
+})
+
+const styleSet = createStyleSet({
+  backgroundColor: '#EFF2F6',
+  bubbleBackground: '#FFFFFF',
+  bubbleFromUserBackground: '#DDDEEF',
+})
+
+styleSet.avatar = {
+  ...styleSet.avatar,
+  '&.from-user': {
+    backgroundColor: '#5558AF',
+  },
+  '&:not(.from-user)': {
+    color: 'transparent',
+    backgroundColor: 'transparent',
+    backgroundImage: `url(/assets/logo.png)`,
+  }
+}
+
+styleSet.uploadButton = {
+  ...styleSet.uploadButton,
+  display: 'none',
+}
 
 export default class extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.mainRef = React.createRef();
-    this.activityMiddleware = createSpeakActivityMiddleware();
+    this.mainRef = React.createRef()
+    this.activityMiddleware = createSpeakActivityMiddleware()
 
-    const userID = 'dl_' + Math.random().toString(36).substr(2, 9);
+    const userID = 'dl_' + Math.random().toString(36).substr(2, 9)
 
     this.state = {
       directLine: createDirectLine({
@@ -44,32 +68,32 @@ export default class extends React.Component {
       userAvatarInitials: 'Me',
       userID,
       webSpeechPonyfillFactory: null
-    };
+    }
   }
 
   componentDidMount() {
-    const sendBox = this.mainRef.current && this.mainRef.current.querySelector('input[type="text"]');
-    sendBox && sendBox.focus();
+    const sendBox = this.mainRef.current && this.mainRef.current.querySelector('input[type="text"]')
+    sendBox && sendBox.focus()
 
     const fetchAuthorizationToken = memoize(() => {
-      return fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' }).then(res => res.json()).then(({ token }) => token);
+      return fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' }).then(res => res.json()).then(({ token }) => token)
     }, (x, y) => {
-      return Math.abs(x - y) < 60000;
-    });
+      return Math.abs(x - y) < 60000
+    })
 
-    const speech = this.props.speech;
+    const speech = this.props.speech
     if (speech === 'speechservices') {
       createCognitiveServicesSpeechServicesPonyfillFactory({
         authorizationToken: () => fetchAuthorizationToken(Date.now()),
         region: 'westus'
-      }).then(webSpeechPonyfillFactory => this.setState(() => ({ webSpeechPonyfillFactory })));
+      }).then(webSpeechPonyfillFactory => this.setState(() => ({ webSpeechPonyfillFactory })))
     } else {
-      this.setState(() => ({ webSpeechPonyfillFactory: createBrowserWebSpeechPonyfillFactory() }));
+      this.setState(() => ({ webSpeechPonyfillFactory: createBrowserWebSpeechPonyfillFactory() }))
     }
   }
 
   render() {
-    const { props: { store }, state } = this;
+    const { props: { store }, state } = this
 
     return (
       <div
@@ -80,6 +104,7 @@ export default class extends React.Component {
           activityMiddleware={this.activityMiddleware}
           botAvatarInitials={state.botAvatarInitials}
           className={CHAT_CSS}
+          styleSet={styleSet}
           directLine={state.directLine}
           locale={state.locale}
           sendTimeout={6000}
@@ -89,6 +114,6 @@ export default class extends React.Component {
           webSpeechPonyfillFactory={state.webSpeechPonyfillFactory}
         />
       </div>
-    );
+    )
   }
 }

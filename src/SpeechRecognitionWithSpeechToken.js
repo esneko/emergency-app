@@ -1,13 +1,13 @@
 import {
   SpeechRecognition
-} from 'web-speech-cognitive-services';
+} from 'web-speech-cognitive-services'
 
 export default speechToken => {
   return class extends SpeechRecognition {
     constructor() {
-      super();
+      super()
 
-      this.speechToken = speechToken;
+      this.speechToken = speechToken
     }
-  };
+  }
 }

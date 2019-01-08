@@ -1,10 +1,10 @@
-import { css } from 'glamor';
-import classNames from 'classnames';
-import React from 'react';
+import { css } from 'glamor'
+import classNames from 'classnames'
+import React from 'react'
 
 import {
   connectToWebChat
-} from 'botframework-webchat';
+} from 'botframework-webchat'
 
 const ROOT_CSS = css({
   alignItems: 'flex-start',
@@ -39,24 +39,24 @@ const ROOT_CSS = css({
       fill: '#767676'
     }
   }
-});
+})
 
 class SpeakActivity extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.handleSpeak = this.handleSpeak.bind(this);
+    this.handleSpeak = this.handleSpeak.bind(this)
   }
 
   handleSpeak() {
-    this.props.markActivity(this.props.activity, 'speak', true);
+    this.props.markActivity(this.props.activity, 'speak', true)
   }
 
   render() {
     const {
       props: { activity, children },
       handleSpeak
-    } = this;
+    } = this
 
     return (
       <div
@@ -81,7 +81,7 @@ class SpeakActivity extends React.Component {
           </svg>
         </button>
       </div>
-    );
+    )
   }
 }
 
@@ -106,6 +106,6 @@ export default function () {
   return () => next => card => {
     return (children =>
       <ConnectedDecorator card={card}>{next(card)(children)}</ConnectedDecorator>
-    );
-  };
+    )
+  }
 }

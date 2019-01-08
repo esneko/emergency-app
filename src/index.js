@@ -2,7 +2,7 @@ import { createStore } from 'botframework-webchat'
 import { css } from 'glamor'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import memoize from 'memoize-one';
+import memoize from 'memoize-one'
 
 import App from './App'
 
