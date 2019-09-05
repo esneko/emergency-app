@@ -13,7 +13,7 @@
     "botframework-webchat": "4.2.0",
     "classnames": "2.2.6",
     "glamor": "2.20.40",
-    "memoize-one": "5.0.0",
+    "memoize-one": "5.1.1",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-redux": "6.0.0",
